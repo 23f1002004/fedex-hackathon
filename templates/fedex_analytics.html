@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FedEx Analytics</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+
+<h2>FedEx – DCA Performance Dashboard</h2>
+
+<table>
+<tr>
+    <th>DCA</th>
+    <th>Cases Assigned</th>
+    <th>Cases Solved</th>
+    <th>SLA Penalties</th>
+    <th>Amount Recovered</th>
+</tr>
+
+{% for dca, s in stats.items() %}
+<tr>
+    <td>{{ dca }}</td>
+    <td>{{ s.assigned }}</td>
+    <td>{{ s.solved }}</td>
+    <td>{{ s.penalties }}</td>
+    <td>₹{{ s.recovered }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/fedex">Back to Dashboard</a>
+
+</div>
+</body>
+</html>

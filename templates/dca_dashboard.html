@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DCA Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h2>DCA Dashboard</h2>
+
+<p><strong>Resolved:</strong> {{ resolved }}</p>
+<p><strong>SLA Penalties:</strong> {{ penalties }}</p>
+<p><strong>Score:</strong> {{ score }}</p>
+
+<table>
+<tr>
+  <th>Customer</th>
+  <th>Priority</th>
+  <th>Status</th>
+  <th>Action</th>
+</tr>
+
+{% for c in cases %}
+<tr>
+  <td>{{ c.customer }}</td>
+  <td>{{ c.priority }}</td>
+  <td>{{ c.status }}</td>
+  <td>
+    <a href="/claim/{{ loop.index0 }}">Claim Solved</a> |
+    <a href="/penalty/{{ loop.index0 }}">SLA Penalty</a>
+  </td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/logout">Logout</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FedEx Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h2>FedEx Employee Dashboard</h2>
+
+<form method="post">
+  <input name="customer" placeholder="Customer" required>
+  <input name="amount" type="number" placeholder="Amount" required>
+  <input name="days" type="number" placeholder="Days overdue" required>
+  <button>Add Case</button>
+</form>
+
+<form method="post" action="/upload" enctype="multipart/form-data">
+  <input type="file" name="file" required>
+  <button>Upload CSV</button>
+</form>
+
+<table>
+<tr>
+  <th>Customer</th>
+  <th>Priority</th>
+  <th>Assigned DCA</th>
+</tr>
+{% for c in cases %}
+<tr>
+  <td>{{ c.customer }}</td>
+  <td>{{ c.priority }}</td>
+  <td>{{ c.dca }}</td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/logout">Logout</a>
+
+</div>
+</body>
+</html>

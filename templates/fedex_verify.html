@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>FedEx Verification</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="container">
+
+<h2>FedEx – Case Verification</h2>
+
+<table>
+<tr>
+    <th>Customer</th>
+    <th>DCA</th>
+    <th>Amount</th>
+    <th>Action</th>
+</tr>
+
+{% for i, c in cases %}
+<tr>
+    <td>{{ c.customer }}</td>
+    <td>{{ c.dca }}</td>
+    <td>{{ c.amount }}</td>
+    <td>
+        <a href="/fedex/approve/{{ i }}">Approve</a> |
+        <a href="/fedex/reject/{{ i }}">Reject</a>
+    </td>
+</tr>
+{% endfor %}
+</table>
+
+<a href="/fedex">Back to Dashboard</a>
+
+</div>
+</body>
+</html>
